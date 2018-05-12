@@ -19,7 +19,7 @@ class ViewController: UIViewController {
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
        
-            let handler = URLSessionHandler()
+            let handler = URLSessionHandler(session: URLSession.shared)
             
             handler.call(request: request, result: { (response) in
                 

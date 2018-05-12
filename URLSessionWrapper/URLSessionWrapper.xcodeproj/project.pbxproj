@@ -12,6 +12,12 @@
 		0345A76520A72A4D008380D6 /* URLSessionWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 0345A75720A72A4D008380D6 /* URLSessionWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0345A77120A72AA1008380D6 /* Callable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345A77020A72AA1008380D6 /* Callable.swift */; };
 		0345A77320A72B11008380D6 /* URLSessionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345A77220A72B11008380D6 /* URLSessionHandler.swift */; };
+		0345A78120A73871008380D6 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345A78020A73871008380D6 /* URLSessionProtocol.swift */; };
+		0345A78320A738AD008380D6 /* URLSessionDataTaskProtocol .swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345A78220A738AD008380D6 /* URLSessionDataTaskProtocol .swift */; };
+		0345A78620A73A6F008380D6 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345A78520A73A6F008380D6 /* MockURLSession.swift */; };
+		0345A78820A73ADA008380D6 /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345A78720A73ADA008380D6 /* MockURLSessionDataTask.swift */; };
+		0345A78B20A73B7E008380D6 /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345A78A20A73B7E008380D6 /* URLSessionExtension.swift */; };
+		03A9F00C20A75A6E00F6BED1 /* URLSessionDataTaskExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A9F00B20A75A6E00F6BED1 /* URLSessionDataTaskExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +39,12 @@
 		0345A76420A72A4D008380D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0345A77020A72AA1008380D6 /* Callable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Callable.swift; sourceTree = "<group>"; };
 		0345A77220A72B11008380D6 /* URLSessionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHandler.swift; sourceTree = "<group>"; };
+		0345A78020A73871008380D6 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
+		0345A78220A738AD008380D6 /* URLSessionDataTaskProtocol .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionDataTaskProtocol .swift"; sourceTree = "<group>"; };
+		0345A78520A73A6F008380D6 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		0345A78720A73ADA008380D6 /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
+		0345A78A20A73B7E008380D6 /* URLSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtension.swift; sourceTree = "<group>"; };
+		03A9F00B20A75A6E00F6BED1 /* URLSessionDataTaskExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +87,7 @@
 		0345A75620A72A4D008380D6 /* URLSessionWrapper */ = {
 			isa = PBXGroup;
 			children = (
+				0345A78920A73B6F008380D6 /* Extensions */,
 				0345A76F20A72A8F008380D6 /* Handlers */,
 				0345A76E20A72A7D008380D6 /* Protocols */,
 				0345A75720A72A4D008380D6 /* URLSessionWrapper.h */,
@@ -86,6 +99,7 @@
 		0345A76120A72A4D008380D6 /* URLSessionWrapperTests */ = {
 			isa = PBXGroup;
 			children = (
+				0345A78420A73A21008380D6 /* Mocks */,
 				0345A76220A72A4D008380D6 /* URLSessionWrapperTests.swift */,
 				0345A76420A72A4D008380D6 /* Info.plist */,
 			);
@@ -96,6 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				0345A77020A72AA1008380D6 /* Callable.swift */,
+				0345A78020A73871008380D6 /* URLSessionProtocol.swift */,
+				0345A78220A738AD008380D6 /* URLSessionDataTaskProtocol .swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -106,6 +122,24 @@
 				0345A77220A72B11008380D6 /* URLSessionHandler.swift */,
 			);
 			path = Handlers;
+			sourceTree = "<group>";
+		};
+		0345A78420A73A21008380D6 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				0345A78520A73A6F008380D6 /* MockURLSession.swift */,
+				0345A78720A73ADA008380D6 /* MockURLSessionDataTask.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		0345A78920A73B6F008380D6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0345A78A20A73B7E008380D6 /* URLSessionExtension.swift */,
+				03A9F00B20A75A6E00F6BED1 /* URLSessionDataTaskExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +254,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0345A77120A72AA1008380D6 /* Callable.swift in Sources */,
+				03A9F00C20A75A6E00F6BED1 /* URLSessionDataTaskExtension.swift in Sources */,
+				0345A78120A73871008380D6 /* URLSessionProtocol.swift in Sources */,
+				0345A78B20A73B7E008380D6 /* URLSessionExtension.swift in Sources */,
+				0345A78320A738AD008380D6 /* URLSessionDataTaskProtocol .swift in Sources */,
 				0345A77320A72B11008380D6 /* URLSessionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,6 +266,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0345A78820A73ADA008380D6 /* MockURLSessionDataTask.swift in Sources */,
+				0345A78620A73A6F008380D6 /* MockURLSession.swift in Sources */,
 				0345A76320A72A4D008380D6 /* URLSessionWrapperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,26 +11,54 @@ import XCTest
 
 class URLSessionWrapperTests: XCTestCase {
     
+    var urlSessionHandler:URLSessionHandler?
+    var session:MockURLSession?
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        self.session = MockURLSession()
+        if let session = session{
+            self.urlSessionHandler = URLSessionHandler(session: session)
+            
+        }
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+
+    func test_get_should_return_data() {
+        let json:String = "{\"id\": 24, \"name\": \"swift\"}"
+        
+        self.session?.nextData = json.data(using: .utf8)
+        
+        var actualData: [String: Any]?
+        if let urlSessionHandler = self.urlSessionHandler{
+            
+            if let url = URL(string: "https://mockurl"){
+                
+                var request = URLRequest(url: url)
+                request.httpMethod = "GET"
+                
+                urlSessionHandler.call(request: request, result: { (response) in
+                    
+                    if let response = response{
+                        if let data = response["responseData"] as? [String: Any]{
+                            actualData = data
+                        }
+                    }
+                    
+                })
+                
+            }
+       
         }
+
+        if let data = actualData{
+            XCTAssert(data["id"] != nil)
+        }
+        
+
     }
     
 }

@@ -9,9 +9,12 @@
 import Foundation
 public class URLSessionHandler:Callable{
     
-    public init() {}
+    let session: URLSessionProtocol
+    public init(session: URLSessionProtocol) {
+        self.session = session
+    }
     public func call(request: URLRequest, result: @escaping ([String : Any]?) -> Void) {
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        let task = session.dataTask(with: request) { data, response, error in
             
             if let httpResponse = response as? HTTPURLResponse {
                 

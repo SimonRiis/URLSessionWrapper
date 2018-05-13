@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
 
 
   s.name         = "URLSessionWrapper"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "Simple wrapper for URLSession."
 
   s.description  = <<-DESC
@@ -27,6 +27,8 @@ Pod::Spec.new do |s|
 
 
   s.source_files  = "URLSessionWrapper/URLSessionWrapper/*.swift"
+  s.source_files  = 'URLSessionWrapper/URLSessionWrapper/**/*.{h,m,swift}'
+  s.swift_version = '4.1'
 
 
 end

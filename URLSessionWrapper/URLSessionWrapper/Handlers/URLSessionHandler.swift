@@ -50,4 +50,48 @@ public class URLSessionHandler:Callable{
         
         
     }
+    
+    public func callForRaw(request: URLRequest, result: @escaping (Data?) -> Void) {
+        let task = session.dataTask(with: request) { data, response, error in
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                
+                let statusCode = httpResponse.statusCode
+                var json:[String: Any] = [
+                    
+                    "statusCode": statusCode
+                    
+                ]
+                if let data = data, let responseJSON = try? JSONSerialization.jsonObject(with: data, options: []){
+                    
+                    if let response = responseJSON as? [String: Any]{
+                        
+                        json["responseData"] = response
+                        
+                    }
+                    
+                }else{
+                    if let error = error{
+                        json["error"] = error.localizedDescription
+                    }
+                }
+                if let resultData = try? JSONSerialization.data(withJSONObject: json, options: []){
+                    result(resultData)
+                }
+                else{
+                    result(nil)
+                }
+                
+            }else{
+                result(nil)
+            }
+            
+            
+        }
+        
+        task.resume()
+        
+        
+    }
+
 }

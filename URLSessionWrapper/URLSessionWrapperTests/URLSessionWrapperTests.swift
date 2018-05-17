@@ -27,7 +27,8 @@ class URLSessionWrapperTests: XCTestCase {
         super.tearDown()
     }
 
-    func test_get_should_return_data() {
+    func test_call() {
+        
         let json:String = "{\"id\": 24, \"name\": \"swift\"}"
         
         self.session?.nextData = json.data(using: .utf8)
@@ -60,5 +61,46 @@ class URLSessionWrapperTests: XCTestCase {
         
 
     }
+    
+    func test_callForRaw() {
+        
+        let json:String = "{\"id\": 24, \"name\": \"swift\"}"
+        
+        self.session?.nextData = json.data(using: .utf8)
+        
+        var actualData: [String: Any]?
+        if let urlSessionHandler = self.urlSessionHandler{
+            
+            if let url = URL(string: "https://mockurl"){
+                
+                var request = URLRequest(url: url)
+                request.httpMethod = "GET"
+                
+                urlSessionHandler.callForRaw(request: request, result: { (response) in
+                    
+                    if let response = response, let responseJSON = try? JSONSerialization.jsonObject(with: response, options: []){
+                        
+                        if let response = responseJSON as? [String: Any]{
+                            
+                            if let data = response["responseData"] as? [String: Any]{
+                                actualData = data
+                            }
+                        }
+                        
+                    }
+                    
+                })
+                
+            }
+            
+        }
+        
+        if let data = actualData{
+            XCTAssert(data["id"] != nil)
+        }
+        
+        
+    }
+
     
 }

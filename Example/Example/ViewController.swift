@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let url = URL(string: "https://exchangeratesapi.io/api/latest"){
+        if let url = URL(string: "https://api.themoviedb.org/3/search/movie?api_key=4cb1eeab94f45affe2536f2c684a5c9e&query=flash&page=1"){
             
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
@@ -25,7 +25,9 @@ class ViewController: UIViewController {
                 
                 if let response = response{
                     if let data = response["responseData"] as? [String: Any]{
-                        print(data)
+                        print(data["results"] as? [[String:Any]])
+              
+                      
                     }
                 }
                 

@@ -11,4 +11,6 @@ public protocol Callable{
     
     func call(request:URLRequest, result: @escaping (_ responseData: [String: Any]?) -> Void)
     
+    func callForRaw(request:URLRequest, result: @escaping (_ responseData: Data?) -> Void)
+    
 }
